@@ -1,33 +1,10 @@
-
 param Location string
 param Prefix string
-param NewVNetAddressSpace string
-param NewVnetNewGatewaySubnetAddressPrefix string
+param GatewaySubnet string
 param NewGatewaySku string = 'Standard'
 
-var NewVNetName = '${Prefix}-vnet'
 var NewVnetNewGatewayName = '${Prefix}-gw'
 
-//New VNet Workflow
-resource NewVNet 'Microsoft.Network/virtualNetworks@2021-02-01' = {
-  name: NewVNetName
-  location: Location
-  properties: {
-    addressSpace: {
-      addressPrefixes: [
-        NewVNetAddressSpace
-      ]
-    }
-    subnets: [
-      {
-        name: 'GatewaySubnet'
-        properties: {
-          addressPrefix: NewVnetNewGatewaySubnetAddressPrefix
-      }
-    }
-    ]
-  }
-}
 
 resource NewGatewayPIP 'Microsoft.Network/publicIPAddresses@2021-08-01' = {
   name: '${NewVnetNewGatewayName}-pip'
@@ -57,7 +34,7 @@ resource NewVnetNewGateway 'Microsoft.Network/virtualNetworkGateways@2021-08-01'
         properties: {
           privateIPAllocationMethod: 'Dynamic'
           subnet: {
-            id: NewVNet.properties.subnets[0].id
+            id: GatewaySubnet
           }
           publicIPAddress: {
             id: NewGatewayPIP.id
@@ -68,6 +45,4 @@ resource NewVnetNewGateway 'Microsoft.Network/virtualNetworkGateways@2021-08-01'
   }
 }
 
-output VNetName string = NewVNet.name
 output GatewayName string = NewVnetNewGateway.name
-output VNetResourceId string = NewVNet.id

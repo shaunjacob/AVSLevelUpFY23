@@ -6,22 +6,10 @@ param Location string
 param Username string
 @secure()
 param Password string
-param VNetResourceGroup string
-param VNetName string
-param JumpboxSubnet string
 param JumpboxSku string
-param BastionSubnet string
+param JumpboxSubnetid string
+param AzureBastionSubnetid string
 
-
-module Subnet 'JumpBox/JumpBoxSubnet.bicep' = {
-  name: 'Jumpbox-Subnet'
-  scope: resourceGroup(VNetResourceGroup)
-  params:{
-    VNetName: VNetName
-    BastionSubnet: BastionSubnet
-    JumpboxSubnet: JumpboxSubnet
-  }
-}
 
 resource JumpboxResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' ={
   name: '${Prefix}-Jumpbox'
@@ -33,7 +21,7 @@ module Bastion 'JumpBox/Bastion.bicep' = {
   scope: JumpboxResourceGroup
   params:{
     Prefix: Prefix
-    SubnetId: Subnet.outputs.BastionSubnetId
+    AzureBastionSubnetid: AzureBastionSubnetid
     Location: Location
   }
 }
@@ -43,7 +31,7 @@ module VM 'JumpBox/JumpBoxVM.bicep' = {
   scope: JumpboxResourceGroup
   params: {
     Prefix: Prefix
-    SubnetId: Subnet.outputs.JumpBoxSubnetId
+    JumpboxSubnetid: JumpboxSubnetid
     Location: Location
     Username: Username
     Password: Password

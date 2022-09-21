@@ -1,5 +1,5 @@
 param Prefix string
-param SubnetId string
+param AzureBastionSubnetid string
 param Location string
 
 resource BastionPIP 'Microsoft.Network/publicIpAddresses@2020-05-01' = {
@@ -22,7 +22,7 @@ resource bastionHost 'Microsoft.Network/bastionHosts@2020-05-01' = {
         name: 'IpConf'
         properties: {
           subnet: {
-            id: SubnetId
+            id: AzureBastionSubnetid
           }
           publicIPAddress: {
             id: BastionPIP.id

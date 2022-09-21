@@ -97,12 +97,8 @@ param SRMLicenseKey string = ''
 @description('Number of vSphere Replication Servers to be created if SRM is deployed')
 param VRServerCount int = 1
 
-@description('Opt-out of deployment telemetry')
-param TelemetryOptOut bool = false
-
 //Variables
 var deploymentPrefix = 'AVS-${uniqueString(deployment().name, Location)}'
-var varCuaid = '1cf4a3e3-529c-4fb2-ba6a-63dff7d71586'
 
 module AVSCore 'Modules/AVSCore.bicep' = {
   name: '${deploymentPrefix}-AVS'
@@ -198,11 +194,4 @@ module Addons 'Modules/AVSAddons.bicep' = if ((DeployHCX) || (DeploySRM)) {
     SRMLicenseKey: SRMLicenseKey
     VRServerCount: VRServerCount
   }
-}
-
-// Optional Deployment for Customer Usage Attribution
-module modCustomerUsageAttribution '../../../../BrownField/Addons/CUAID/customerUsageAttribution/cuaIdSubscription.bicep' = if (!TelemetryOptOut) {
-  #disable-next-line no-loc-expr-outside-params
-  name: 'pid-${varCuaid}-${uniqueString(deployment().name, Location)}'
-  params: {}
 }
