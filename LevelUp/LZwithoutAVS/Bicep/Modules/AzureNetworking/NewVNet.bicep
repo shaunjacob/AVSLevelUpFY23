@@ -1,7 +1,7 @@
 
 param Location string
 param Prefix string
-param NewVNetAddressSpace string
+param NewHubVNetAddressSpace string
 param GatewaySubnetPrefix string
 param AzureFirewallSubnetPrefix string
 param AzureBastionSubnetPrefix string
@@ -9,16 +9,16 @@ param RouteServerSubnetPrefix string
 param TestVMSubnetPrefix string
 param JumpboxSubnetPrefix string
 
-var NewVNetName = '${Prefix}-vnet'
+var NewHubVNetName = '${Prefix}-hub-vnet'
 
 //New VNet Workflow
-resource NewVNet 'Microsoft.Network/virtualNetworks@2021-02-01' = {
-  name: NewVNetName
+resource NewHubVNet 'Microsoft.Network/virtualNetworks@2021-02-01' = {
+  name: NewHubVNetName
   location: Location
   properties: {
     addressSpace: {
       addressPrefixes: [
-        NewVNetAddressSpace
+        NewHubVNetAddressSpace
       ]
     }
     subnets: [
@@ -62,11 +62,12 @@ resource NewVNet 'Microsoft.Network/virtualNetworks@2021-02-01' = {
   }
 }
 
-output GatewaySubnetid string = NewVNet.properties.subnets[0].id
-output AzureFirewallSubnetid string = NewVNet.properties.subnets[1].id
-output AzureBastionSubnetid string = NewVNet.properties.subnets[2].id
-output RouteServerSubnetid string = NewVNet.properties.subnets[3].id
-output JumpboxSubnetid string = NewVNet.properties.subnets[4].id
-output TestVMSubnetid string = NewVNet.properties.subnets[5].id
-output VNetName string = NewVNet.name
-output VNetResourceId string = NewVNet.id
+output GatewaySubnetid string = NewHubVNet.properties.subnets[0].id
+output AzureFirewallSubnetid string = NewHubVNet.properties.subnets[1].id
+output AzureBastionSubnetid string = NewHubVNet.properties.subnets[2].id
+output RouteServerSubnetid string = NewHubVNet.properties.subnets[3].id
+output JumpboxSubnetid string = NewHubVNet.properties.subnets[4].id
+output TestVMSubnetid string = NewHubVNet.properties.subnets[5].id
+output HubVNetName string = NewHubVNet.name
+output HubVNetResourceId string = NewHubVNet.id
+

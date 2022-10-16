@@ -2,8 +2,8 @@ targetScope = 'subscription'
 
 param Location string
 param Prefix string
-param VNetName string
-param AzureFirewallSubnetPrefix string
+param AzureFirewallSubnetid string
+param JumpboxSubnetid string
 param Username string
 @secure()
 param Password string
@@ -11,30 +11,29 @@ param Password string
 
 
 resource NetworkResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: '${Prefix}-Network'
+  name: '${Prefix}-HubNetwork'
   location: Location
 }
 
 module AzureFirewall 'AzureFirewall/AzureFirewall.bicep' = {
   scope: NetworkResourceGroup
-  name: '${deployment().name}-TestVMSubnet'
+  name: '${deployment().name}-AzureFirewall'
   params: {
     Prefix: Prefix
     Location: Location
-    VNetName: VNetName
-    AzureFirewallSubnetPrefix : AzureFirewallSubnetPrefix
+    AzureFirewallSubnetid : AzureFirewallSubnetid
   }
 }
 
-module QuaggaVM 'AzureFirewall/Quagga.bicep' = {
+module FRRVM 'AzureFirewall/FRR.bicep' = {
   scope: NetworkResourceGroup
-  name: '${deployment().name}-TestVMSubnet'
+  name: '${deployment().name}-FRRVM'
   params: {
     Prefix: Prefix
     Location: Location
-    VNetName : VNetName
     Username: Username
     Password : Password
+    JumpboxSubnetid : JumpboxSubnetid
   }
 }
 

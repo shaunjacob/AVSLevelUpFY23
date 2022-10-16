@@ -1,24 +1,17 @@
 param Prefix string
-param VNetName string
 param Location string
 param Username string
 @secure()
 param Password string
+param JumpboxSubnetid string
 param vmSize string = 'Standard_B2s'
 
-var Name = '${Prefix}-quagga'
-var Hostname = 'quagga'
-var publicIPAddressName = '${Prefix}-quagga-pip'
-var networkSecurityGroupName = '${Prefix}-quagga-nsg'
+var Name = '${Prefix}-frr'
+var Hostname = 'frr'
+var publicIPAddressName = '${Prefix}-frr-pip'
+var networkSecurityGroupName = '${Prefix}-frr-nsg'
 var osDiskType = 'Standard_LRS'
 
-resource VNet 'Microsoft.Network/virtualNetworks@2021-02-01' existing = {
-  name: VNetName
-}
-
-resource ExistingVMSubnet 'Microsoft.Network/virtualNetworks/subnets@2021-08-01' existing = {
-  name: '${VNet.name}/Jumpbox'
-}
 
 resource nic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
   name: Name
@@ -29,7 +22,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
         name: 'ipconfig1'
         properties: {
           subnet: {
-            id: ExistingVMSubnet.id
+            id: JumpboxSubnetid
           }
           privateIPAllocationMethod: 'Dynamic'
           publicIPAddress: {
@@ -80,7 +73,7 @@ resource publicIP 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
   }
 }
 
-resource quaggavm 'Microsoft.Compute/virtualMachines@2021-11-01' = {
+resource frrvm 'Microsoft.Compute/virtualMachines@2021-11-01' = {
   name: Name
   location: Location
   properties: {
@@ -122,4 +115,4 @@ resource quaggavm 'Microsoft.Compute/virtualMachines@2021-11-01' = {
 }
 
 output adminUsername string = Username
-output QuaggaResourceId string = quaggavm.id
+output frrResourceId string = frrvm.id

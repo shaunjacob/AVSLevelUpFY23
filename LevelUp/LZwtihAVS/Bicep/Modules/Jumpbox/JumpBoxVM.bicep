@@ -1,14 +1,14 @@
 param Prefix string
+param JumpboxSubnetid string
 param Location string
 param Username string
 @secure()
 param Password string
-param VMSize string = 'Standard_B2s'
-param TestVNetSubnetid string
+param VMSize string
+param OSVersion string = 'win11-21h2-avd'
 
-var Name = '${Prefix}-TestVM'
-var Hostname = 'avstestvm'
-
+var Name = '${Prefix}-jumpbox'
+var Hostname = 'avsjumpbox'
 
 resource Nic 'Microsoft.Network/networkInterfaces@2021-02-01' = {
   name: Name
@@ -20,7 +20,7 @@ resource Nic 'Microsoft.Network/networkInterfaces@2021-02-01' = {
         properties: {
           privateIPAllocationMethod: 'Dynamic'
           subnet: {
-            id: TestVNetSubnetid
+            id: JumpboxSubnetid
           }
         }
       }
@@ -44,7 +44,7 @@ resource VM 'Microsoft.Compute/virtualMachines@2021-03-01' = {
       imageReference: {
         publisher: 'MicrosoftWindowsDesktop'
         offer: 'Windows-11'
-        sku: 'win11-21h2-avd'
+        sku: OSVersion
         version: 'latest'
       }
       osDisk: {
@@ -64,5 +64,4 @@ resource VM 'Microsoft.Compute/virtualMachines@2021-03-01' = {
   }
 }
 
-output TestVMName string = VM.name
-output TestVMResourceId string = VM.id
+output JumpboxResourceId string = VM.id
