@@ -6,10 +6,10 @@ param Password string
 param JumpboxSubnetid string
 param vmSize string = 'Standard_B2s'
 
-var Name = '${Prefix}-frr'
-var Hostname = 'frr'
-var publicIPAddressName = '${Prefix}-frr-pip'
-var networkSecurityGroupName = '${Prefix}-frr-nsg'
+var Name = '${Prefix}-nva'
+var Hostname = 'nva'
+var publicIPAddressName = '${Prefix}-nva-pip'
+var networkSecurityGroupName = '${Prefix}-nva-nsg'
 var osDiskType = 'Standard_LRS'
 
 
@@ -88,9 +88,9 @@ resource frrvm 'Microsoft.Compute/virtualMachines@2021-11-01' = {
         }
       }
       imageReference: {
-        publisher: 'Canonical'
-        offer: 'UbuntuServer'
-        sku: '18.04-LTS'
+        publisher: 'OpenLogic'
+        offer: 'CentOS'
+        sku: '8_5'
         version: 'latest'
       }
     }

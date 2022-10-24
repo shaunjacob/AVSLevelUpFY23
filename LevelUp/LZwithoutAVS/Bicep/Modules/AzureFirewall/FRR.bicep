@@ -88,9 +88,9 @@ resource frrvm 'Microsoft.Compute/virtualMachines@2021-11-01' = {
         }
       }
       imageReference: {
-        publisher: 'Canonical'
-        offer: 'UbuntuServer'
-        sku: '18.04-LTS'
+        publisher: 'OpenLogic'
+        offer: 'CentOS'
+        sku: '8_5'
         version: 'latest'
       }
     }

@@ -6,7 +6,7 @@ param GatewaySubnetPrefix string
 param AzureFirewallSubnetPrefix string
 param AzureBastionSubnetPrefix string
 param RouteServerSubnetPrefix string
-param TestVMSubnetPrefix string
+param ANFSubnetPrefix string
 param JumpboxSubnetPrefix string
 
 var NewHubVNetName = '${Prefix}-hub-vnet'
@@ -53,9 +53,9 @@ resource NewHubVNet 'Microsoft.Network/virtualNetworks@2021-02-01' = {
         }
       }
       {
-        name: 'TestVMSubnet'
+        name: 'ANFSubnet'
         properties: {
-          addressPrefix: TestVMSubnetPrefix
+          addressPrefix: ANFSubnetPrefix
         }
       }
     ]
@@ -67,7 +67,7 @@ output AzureFirewallSubnetid string = NewHubVNet.properties.subnets[1].id
 output AzureBastionSubnetid string = NewHubVNet.properties.subnets[2].id
 output RouteServerSubnetid string = NewHubVNet.properties.subnets[3].id
 output JumpboxSubnetid string = NewHubVNet.properties.subnets[4].id
-output TestVMSubnetid string = NewHubVNet.properties.subnets[5].id
+output ANFSubnetPrefixid string = NewHubVNet.properties.subnets[5].id
 output HubVNetName string = NewHubVNet.name
 output HubVNetResourceId string = NewHubVNet.id
 

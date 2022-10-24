@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "Prefix": {
+            "value": "LEVELUP-LAB3"
+        },
+        "PrivateCloudAddressSpace": {
+            "value": "10.3.0.0/22"
+        },
+        "PrivateCloudSKU": {
+            "value": "AV36"
+        },
+        "PrivateCloudHostCount": {
+            "value": 3
+        },
+        "NewHubVNetAddressSpace": {
+            "value": "10.103.0.0/16"
+        },
+        "GatewaySubnetPrefix": {
+            "value": "10.103.1.0/24"
+        },
+        "AzureFirewallSubnetPrefix": {
+            "value": "10.103.4.0/24"
+        },
+        "AzureBastionSubnetPrefix": {
+            "value": "10.103.2.0/24"
+        },
+        "RouteServerSubnetPrefix": {
+            "value": "10.103.3.0/24"
+        },
+        "ANFSubnetPrefix": {
+            "value": "10.103.7.0/24"
+        },
+        "JumpboxSubnetPrefix": {
+            "value": "10.103.5.0/24"
+        },
+        "NewSpokeVNetAddressSpace": {
+            "value": "10.203.1.0/24"
+        },
+        "SpokeSubnetPrefix": {
+            "value": "10.203.1.0/27"
+        },
+        "Password": {
+            "value": "ChangeM3!"
+        }
+    }
+}

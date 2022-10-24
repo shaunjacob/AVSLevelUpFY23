@@ -7,7 +7,7 @@ param GatewaySubnetPrefix string
 param AzureFirewallSubnetPrefix string
 param AzureBastionSubnetPrefix string
 param RouteServerSubnetPrefix string
-param TestVMSubnetPrefix string
+param ANFSubnetPrefix string
 param JumpboxSubnetPrefix string
 
 resource NetworkResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
@@ -26,7 +26,7 @@ module NewNetwork 'AzureNetworking/NewVNet.bicep' = {
     AzureFirewallSubnetPrefix : AzureFirewallSubnetPrefix
     AzureBastionSubnetPrefix : AzureBastionSubnetPrefix
     RouteServerSubnetPrefix : RouteServerSubnetPrefix
-    TestVMSubnetPrefix : TestVMSubnetPrefix
+    ANFSubnetPrefix : ANFSubnetPrefix
     JumpboxSubnetPrefix : JumpboxSubnetPrefix
   }
 }
@@ -50,5 +50,5 @@ output AzureFirewallSubnetid string = NewNetwork.outputs.AzureFirewallSubnetid
 output AzureBastionSubnetid string = NewNetwork.outputs.AzureBastionSubnetid
 output RouteServerSubnetid string = NewNetwork.outputs.RouteServerSubnetid
 output JumpboxSubnetid string = NewNetwork.outputs.JumpboxSubnetid
-output TestVMSubnetid string = NewNetwork.outputs.TestVMSubnetid
+output ANFSubnetPrefixid string = NewNetwork.outputs.ANFSubnetPrefixid
 

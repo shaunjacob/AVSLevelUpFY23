@@ -1,0 +1,10 @@
+az deployment sub create --name LevelUp-Lab1 --location canadacentral --template-file ESLZDeploy.bicep --parameters LEVELUP-LAB1.parameters.json --no-wait
+az deployment sub create --name LevelUp-Lab2 --location canadacentral --template-file ESLZDeploy.bicep --parameters LEVELUP-LAB2.parameters.json --no-wait
+az deployment sub create --name LevelUp-Lab3 --location canadacentral --template-file ESLZDeploy.bicep --parameters LEVELUP-LAB3.parameters.json --no-wait
+az deployment sub create --name LevelUp-Lab4 --location canadacentral --template-file ESLZDeploy.bicep --parameters LEVELUP-LAB4.parameters.json --no-wait
+az deployment sub create --name LevelUp-Lab5 --location canadacentral --template-file ESLZDeploy.bicep --parameters LEVELUP-LAB5.parameters.json --no-wait
+az deployment sub create --name LevelUp-Lab6 --location canadacentral --template-file ESLZDeploy.bicep --parameters LEVELUP-LAB6.parameters.json --no-wait
+az deployment sub create --name LevelUp-Lab7 --location canadacentral --template-file ESLZDeploy.bicep --parameters LEVELUP-LAB7.parameters.json --no-wait
+az deployment sub create --name LevelUp-Lab8 --location canadacentral --template-file ESLZDeploy.bicep --parameters LEVELUP-LAB8.parameters.json --no-wait
+az deployment sub create --name LevelUp-Lab9 --location canadacentral --template-file ESLZDeploy.bicep --parameters LEVELUP-LAB9.parameters.json --no-wait
+az deployment sub create --name LevelUp-Lab10 --location canadacentral --template-file ESLZDeploy.bicep --parameters LEVELUP-LAB10.parameters.json --no-wait
