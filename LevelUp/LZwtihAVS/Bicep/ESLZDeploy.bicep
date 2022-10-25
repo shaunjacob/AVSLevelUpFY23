@@ -27,6 +27,7 @@ param AzureBastionSubnetPrefix string = '10.101.2.0/24'
 param RouteServerSubnetPrefix string = '10.101.3.0/24'
 param ANFSubnetPrefix string = '10.101.6.0/24'
 param JumpboxSubnetPrefix string = '10.101.5.0/24'
+param NVASubnetPrefix string = '10.101.6.0/24'
 param NewSpokeVNetAddressSpace string = '10.201.1.0/24'
 param SpokeSubnetPrefix string = '10.201.1.0/27'
 
@@ -75,6 +76,7 @@ module AzureNetworking 'Modules/AzureNetworking.bicep' = {
     RouteServerSubnetPrefix : RouteServerSubnetPrefix
     ANFSubnetPrefix : ANFSubnetPrefix
     JumpboxSubnetPrefix : JumpboxSubnetPrefix
+    NVASubnetPrefix : NVASubnetPrefix
   }
 }
 
@@ -108,7 +110,7 @@ module AzureFirewall 'Modules/AzureFirewall.bicep' = {
     Username: Username
     Password: Password
     AzureFirewallSubnetid : AzureNetworking.outputs.AzureFirewallSubnetid
-    JumpboxSubnetid : AzureNetworking.outputs.JumpboxSubnetid
+    NVASubnetid : AzureNetworking.outputs.NVASubnetid
   }
 }
 

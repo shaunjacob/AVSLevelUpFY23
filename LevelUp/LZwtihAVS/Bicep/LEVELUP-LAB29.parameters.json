@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "Prefix": {
-            "value": "LEVELUP-LAB2"
+            "value": "LEVELUP-LAB29"
         },
         "PrivateCloudAddressSpace": {
-            "value": "10.2.0.0/22"
+            "value": "10.29.0.0/22"
         },
         "PrivateCloudSKU": {
             "value": "AV36"
@@ -15,34 +15,34 @@
             "value": 3
         },
         "NewHubVNetAddressSpace": {
-            "value": "10.102.0.0/16"
+            "value": "10.129.0.0/16"
         },
         "GatewaySubnetPrefix": {
-            "value": "10.102.1.0/24"
+            "value": "10.129.1.0/24"
         },
         "AzureFirewallSubnetPrefix": {
-            "value": "10.102.4.0/24"
+            "value": "10.129.4.0/24"
         },
         "AzureBastionSubnetPrefix": {
-            "value": "10.102.2.0/24"
+            "value": "10.129.2.0/24"
         },
         "RouteServerSubnetPrefix": {
-            "value": "10.102.3.0/24"
+            "value": "10.129.3.0/24"
         },
         "ANFSubnetPrefix": {
-            "value": "10.102.7.0/24"
+            "value": "10.129.7.0/24"
         },
         "NVASubnetPrefix": {
-            "value": "10.102.6.0/24"
+            "value": "10.129.6.0/24"
         },
         "JumpboxSubnetPrefix": {
-            "value": "10.102.5.0/24"
+            "value": "10.129.5.0/24"
         },
         "NewSpokeVNetAddressSpace": {
-            "value": "10.202.1.0/24"
+            "value": "10.229.1.0/24"
         },
         "SpokeSubnetPrefix": {
-            "value": "10.202.1.0/27"
+            "value": "10.229.1.0/27"
         },
         "Password": {
             "value": "ChangeM3!"

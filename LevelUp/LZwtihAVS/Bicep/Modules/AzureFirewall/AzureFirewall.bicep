@@ -45,71 +45,8 @@ resource firewall 'Microsoft.Network/azureFirewalls@2022-01-01' = {
         }
       }
     ]
-    networkRuleCollections: [
-      {
-        name: 'NetRule1'
-        properties: {
-          priority: 100
-          action: {
-            type: 'Allow'
-          }
-          rules: [
-            {
-              name: 'Any'
-              protocols: [
-                'Any'
-              ]
-              sourceAddresses: [
-                '*'
-              ]
-              destinationAddresses: [
-                '*'
-              ]
-              sourceIpGroups: []
-              destinationIpGroups: []
-              destinationFqdns: []
-              destinationPorts: [
-                '*'
-              ]
-            }
-          ]
-        }
-      }
-    ]
-    applicationRuleCollections: [
-        {
-            name: 'AppRule1'
-            properties: {
-                priority: 100
-                action: {
-                    type: 'Allow'
-                }
-                rules: [
-                    {
-                        name: 'google'
-                        protocols: [
-                            {
-                                protocolType: 'Http'
-                                port: 80
-                            }
-                            {
-                                protocolType: 'Https'
-                                port: 443
-                            }
-                        ]
-                        fqdnTags: []
-                        targetFqdns: [
-                            '*.google.com'
-                        ]
-                        sourceAddresses: [
-                            '*'
-                        ]
-                        sourceIpGroups: []
-                    }
-                ]
-            }
-        }
-    ]
+    networkRuleCollections: []
+    applicationRuleCollections: []
     natRuleCollections: []
   }
 }

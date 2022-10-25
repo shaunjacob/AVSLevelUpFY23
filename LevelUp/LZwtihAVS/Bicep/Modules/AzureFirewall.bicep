@@ -3,7 +3,7 @@ targetScope = 'subscription'
 param Location string
 param Prefix string
 param AzureFirewallSubnetid string
-param JumpboxSubnetid string
+param NVASubnetid string
 param Username string
 @secure()
 param Password string
@@ -33,7 +33,7 @@ module FRRVM 'AzureFirewall/FRR.bicep' = {
     Location: Location
     Username: Username
     Password : Password
-    JumpboxSubnetid : JumpboxSubnetid
+    NVASubnetid : NVASubnetid
   }
 }
 

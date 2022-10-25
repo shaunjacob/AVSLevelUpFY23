@@ -9,6 +9,7 @@ param AzureBastionSubnetPrefix string
 param RouteServerSubnetPrefix string
 param ANFSubnetPrefix string
 param JumpboxSubnetPrefix string
+param NVASubnetPrefix string
 
 resource NetworkResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: '${Prefix}-HubNetwork'
@@ -28,6 +29,7 @@ module NewNetwork 'AzureNetworking/NewVNet.bicep' = {
     RouteServerSubnetPrefix : RouteServerSubnetPrefix
     ANFSubnetPrefix : ANFSubnetPrefix
     JumpboxSubnetPrefix : JumpboxSubnetPrefix
+    NVASubnetPrefix : NVASubnetPrefix
   }
 }
 
@@ -51,4 +53,6 @@ output AzureBastionSubnetid string = NewNetwork.outputs.AzureBastionSubnetid
 output RouteServerSubnetid string = NewNetwork.outputs.RouteServerSubnetid
 output JumpboxSubnetid string = NewNetwork.outputs.JumpboxSubnetid
 output ANFSubnetPrefixid string = NewNetwork.outputs.ANFSubnetPrefixid
+output NVASubnetid string = NewNetwork.outputs.NVASubnetid
+
 

@@ -32,6 +32,9 @@
         "ANFSubnetPrefix": {
             "value": "10.104.7.0/24"
         },
+        "NVASubnetPrefix": {
+            "value": "10.104.6.0/24"
+        },
         "JumpboxSubnetPrefix": {
             "value": "10.104.5.0/24"
         },

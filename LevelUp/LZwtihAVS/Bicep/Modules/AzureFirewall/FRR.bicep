@@ -3,7 +3,7 @@ param Location string
 param Username string
 @secure()
 param Password string
-param JumpboxSubnetid string
+param NVASubnetid string
 param vmSize string = 'Standard_B2s'
 
 var Name = '${Prefix}-nva'
@@ -22,7 +22,7 @@ resource nic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
         name: 'ipconfig1'
         properties: {
           subnet: {
-            id: JumpboxSubnetid
+            id: NVASubnetid
           }
           privateIPAllocationMethod: 'Dynamic'
           publicIPAddress: {
