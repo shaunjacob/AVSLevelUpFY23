@@ -5,11 +5,13 @@ nsx_password = "d$14cV15xF*p"
 nsx_tag      = "Test"
 dhcp_profile = {
     # DHCP Server IP
-    server_address = "192.168.0.2/27"
+    server_address = "192.168.0.1/30"
     # Lease
     lease_time     = 86400
     # DNS Server nsx_ip
     dns_servers    = ["8.8.8.8"]
+    display_name = "test"
+    description = "test"
 }
 overlay_tz = {
     # Overlay TZ Name
@@ -37,7 +39,7 @@ lup_oct22_segment = {
     dhcp_ranges         = ["192.168.11.4-192.168.11.20"]
     # DHCP Details
     dhcp_v4_config      = {
-      server_address = "192.168.0.2/27"
+      server_address = "192.168.0.1/30"
       lease_time     = 86400
       dns_servers    = ["8.8.8.8"]
     }
