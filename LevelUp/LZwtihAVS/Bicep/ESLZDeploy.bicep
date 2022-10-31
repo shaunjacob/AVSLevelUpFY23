@@ -8,6 +8,7 @@ param Prefix string = 'SJLUPTEST1'
 param Location string = deployment().location
 
 //Private Cloud
+param DeployPrivateCloud bool = true
 @description('The address space used for the AVS Private Cloud management networks. Must be a non-overlapping /22')
 param PrivateCloudAddressSpace string
 @description('The SKU that should be used for the first cluster, ensure you have quota for the given SKU before deploying')
@@ -37,11 +38,18 @@ param Username string = 'avsjump'
 @secure()
 param Password string = ''
 param JumpboxSku string = 'Standard_B2s'
+@description('Should run a bootstrap PowerShell script on the Jumpbox VM or not')
+param BootstrapJumpboxVM bool = false
+@description('The path for Jumpbox VM bootstrap PowerShell script file (expecting "bootstrap.ps1" file)')
+param BootstrapPath string = 'https://raw.githubusercontent.com/Azure/Enterprise-Scale-for-AVS/main/AVS-Landing-Zone/GreenField/Scripts/bootstrap.ps1'
+@description('The command to trigger running the bootstrap script. If was not provided, then the expected script file name must be "bootstrap.ps1")')
+param BootstrapCommand string = 'powershell.exe -ExecutionPolicy Unrestricted -File bootstrap.ps1'
+@description('The subnet CIDR used for the Bastion Subnet. Must be a /26 or greater within the VNetAddressSpace')
 
 //Variables
 var deploymentPrefix = 'AVS-${uniqueString(deployment().name, Location)}'
 
-module AVSCore 'Modules/AVSCore.bicep' = {
+module AVSCore 'Modules/AVSCore.bicep' = if (DeployPrivateCloud) {
   name: '${deploymentPrefix}-AVS'
   params: {
     Prefix: Prefix
@@ -99,6 +107,10 @@ module Jumpbox 'Modules/JumpBox.bicep' = {
     AzureBastionSubnetid : AzureNetworking.outputs.AzureBastionSubnetid
     JumpboxSubnetid : AzureNetworking.outputs.JumpboxSubnetid
     JumpboxSku: JumpboxSku
+    BootstrapJumpboxVM: BootstrapJumpboxVM
+    BootstrapPath: BootstrapPath
+    BootstrapCommand: BootstrapCommand
+
   }
 }
 

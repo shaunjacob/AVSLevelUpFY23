@@ -1,7 +1,7 @@
 #Group1
 az group delete --name "LEVELUP-LAB1-HubNetwork" --no-wait --yes
 az group delete --name "LEVELUP-LAB1-SpokeNetwork" --no-wait --yes
-az group delete --name "LEVELUP-LAB1-PrivateCloud" --no-wait --yes
+#az group delete --name "LEVELUP-LAB1-PrivateCloud" --no-wait --yes
 
 #Group2
 az group delete --name "LEVELUP-LAB2-HubNetwork" --no-wait --yes

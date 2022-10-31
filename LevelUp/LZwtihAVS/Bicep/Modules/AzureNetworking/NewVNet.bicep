@@ -57,6 +57,14 @@ resource NewHubVNet 'Microsoft.Network/virtualNetworks@2021-02-01' = {
         name: 'ANFSubnet'
         properties: {
           addressPrefix: ANFSubnetPrefix
+          delegations: [
+            {
+              name: 'microsoftnetapp'
+              properties: {
+                serviceName: 'Microsoft.Netapp/volumes'
+              }
+            }
+          ]
         }
       }
       {
