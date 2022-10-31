@@ -31,7 +31,7 @@ lup_oct22_segment = {
     dhcp_v4_config = {
       server_address = "192.168.0.2/27"
       lease_time     = 86400
-      dns_servers    = ["10.179.0.192"]
+      dns_servers    = ["8.8.8.8"]
     }
   }
   tag = {
@@ -47,5 +47,5 @@ vsphere_user       = "cloudadmin@vsphere.local"
 vsphere_password   = "7j#57K)rQah8"
 vm-name            = "levelup-vm"
 datastore          = "vsanDatastore"
-host               = "esx18-r16.p01.canadacentral.avs.azure.com"
+host               = "esx18-r16.p01.7e7cab7de615459b966a0b.canadacentral.avs.azure.com"
 network            = "LUP-NOV22-SEG"

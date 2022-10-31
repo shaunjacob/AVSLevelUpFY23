@@ -13,7 +13,7 @@ resource "vsphere_virtual_machine" "testvm01" {
   folder               = trimprefix(vsphere_folder.folder.path, "/${data.vsphere_datacenter.datacenter.name}/vm")
   datacenter_id        = data.vsphere_datacenter.datacenter.id
   datastore_id         = data.vsphere_datastore.datastore.id
-  #host_system_id       = data.vsphere_host.host.id
+  host_system_id       = data.vsphere_host.host.id
   resource_pool_id     = data.vsphere_resource_pool.pool.id
   num_cpus             = data.vsphere_ovf_vm_template.photon_ovf.num_cpus
   num_cores_per_socket = data.vsphere_ovf_vm_template.photon_ovf.num_cores_per_socket
