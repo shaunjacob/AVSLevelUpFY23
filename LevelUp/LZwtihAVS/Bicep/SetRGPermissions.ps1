@@ -18,6 +18,9 @@ az role assignment create --assignee "Lab3@vmwaresales101outlook.onmicrosoft.com
 az role assignment create --assignee "Lab4@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB4-HubNetwork"
 #az role assignment create --assignee "Lab4@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB4-SpokeNetwork"
 az role assignment create --assignee "Lab4@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB4-PrivateCloud"
+az role assignment create --assignee "Lab4A@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB4-HubNetwork"
+#az role assignment create --assignee "Lab4@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB4-SpokeNetwork"
+az role assignment create --assignee "Lab4A@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB4-PrivateCloud"
 
 #Lab5
 az role assignment create --assignee "Lab5@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB5-HubNetwork"
@@ -50,9 +53,9 @@ az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.co
 az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB10-PrivateCloud"
 
 #Lab11
-az role assignment create --assignee "Lab11@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB11-HubNetwork"
+az role assignment create --assignee "Lab11B@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB11-HubNetwork"
 #az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
-az role assignment create --assignee "Lab11@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB11-PrivateCloud"
+az role assignment create --assignee "Lab11B@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB11-PrivateCloud"
 
 #Lab12
 az role assignment create --assignee "Lab12@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB12-HubNetwork"
@@ -76,3 +79,78 @@ az role assignment create --assignee "Lab14@vmwaresales101outlook.onmicrosoft.co
 az role assignment create --assignee "Lab15@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB15-HubNetwork"
 #az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
 az role assignment create --assignee "Lab15@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB15-PrivateCloud"
+
+#Lab16
+az role assignment create --assignee "Lab16@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB16-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab16@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB16-PrivateCloud"
+
+#Lab17
+az role assignment create --assignee "Lab17@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB17-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab17@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB17-PrivateCloud"
+
+#Lab18
+az role assignment create --assignee "Lab18@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB18-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab18@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB18-PrivateCloud"
+
+#Lab19
+az role assignment create --assignee "Lab19@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB19-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab19@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB19-PrivateCloud"
+
+#Lab20
+az role assignment create --assignee "Lab20@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB20-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab20@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB20-PrivateCloud"
+
+#Lab21
+az role assignment create --assignee "Lab21@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB21-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab21@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB21-PrivateCloud"
+
+#Lab22
+az role assignment create --assignee "Lab22@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB22-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab22@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB22-PrivateCloud"
+
+#Lab23
+az role assignment create --assignee "Lab23@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB23-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab23@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB23-PrivateCloud"
+
+#Lab24
+az role assignment create --assignee "Lab24@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB24-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab24@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB24-PrivateCloud"
+
+#Lab25
+az role assignment create --assignee "Lab25@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB25-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab25@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB25-PrivateCloud"
+
+#Lab26
+az role assignment create --assignee "Lab26@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB26-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab26@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB26-PrivateCloud"
+
+#Lab27
+az role assignment create --assignee "Lab27@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB27-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab27@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB27-PrivateCloud"
+
+#Lab28
+az role assignment create --assignee "Lab28@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB28-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab28@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB28-PrivateCloud"
+
+#Lab29
+az role assignment create --assignee "Lab29@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB29-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab29@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB29-PrivateCloud"
+
+#Lab30
+az role assignment create --assignee "Lab30@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB30-HubNetwork"
+#az role assignment create --assignee "Lab10@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-Lab "LEVELUP-LAB10-SpokeNetwork"
+az role assignment create --assignee "Lab30@vmwaresales101outlook.onmicrosoft.com" --role "Contributor" --resource-group "LEVELUP-LAB30-PrivateCloud"
