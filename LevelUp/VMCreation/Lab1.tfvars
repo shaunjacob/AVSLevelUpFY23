@@ -1,0 +1,9 @@
+# VM configuration
+vsphere_datacenter = "SDDC-Datacenter"
+vsphere_server     = "10.1.0.2"
+vsphere_user       = "cloudadmin@vsphere.local"
+vsphere_password   = "&gSh9l3^Q0t4"
+vm-name            = "levelup-vm"
+datastore          = "vsanDatastore"
+host               = "esx18-r16.p01.7e7cab7de615459b966a0b.canadacentral.avs.azure.com"
+network            = "VMSegment"

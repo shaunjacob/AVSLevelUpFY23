@@ -4,7 +4,7 @@ module "vm" {
   vsphere_server     = var.vsphere_server
   vsphere_user       = var.vsphere_user
   vsphere_password   = var.vsphere_password
-  network            = module.network.segment
+  network            = var.network
   host               = var.host
   depends_on = [
     time_sleep.wait_90_seconds

@@ -2,15 +2,8 @@
 ## Deployment of PhotonOS VM from Remote OVF
 ##
 
-resource "vsphere_folder" "folder" {
-  path          = "Workloads"
-  type          = "vm"
-  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
-}
-
 resource "vsphere_virtual_machine" "testvm01" {
   name                 = var.vm-name
-  folder               = trimprefix(vsphere_folder.folder.path, "/${data.vsphere_datacenter.datacenter.name}/vm")
   datacenter_id        = data.vsphere_datacenter.datacenter.id
   datastore_id         = data.vsphere_datastore.datastore.id
   host_system_id       = data.vsphere_host.host.id
