@@ -45,7 +45,37 @@ resource firewall 'Microsoft.Network/azureFirewalls@2022-01-01' = {
         }
       }
     ]
-    networkRuleCollections: []
+    networkRuleCollections: [
+      {
+        name: 'DNS'
+        properties: {
+          priority: 100
+          action: {
+            type: 'Allow'
+          }
+          rules: [
+            {
+              name: 'DNS'
+              protocols: [
+                'Any'
+              ]
+              sourceAddresses: [
+                '*'
+              ]
+              destinationAddresses: [
+                '*'
+              ]
+              sourceIpGroups: []
+              destinationIpGroups: []
+              destinationFqdns: []
+              destinationPorts: [
+                '53'
+              ]
+            }
+          ]
+        }
+      }
+    ]
     applicationRuleCollections: []
     natRuleCollections: []
   }

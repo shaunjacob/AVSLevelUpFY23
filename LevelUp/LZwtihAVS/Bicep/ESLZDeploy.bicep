@@ -39,12 +39,17 @@ param Username string = 'avsjump'
 param Password string = ''
 param JumpboxSku string = 'Standard_B2s'
 @description('Should run a bootstrap PowerShell script on the Jumpbox VM or not')
-param BootstrapJumpboxVM bool = false
+param BootstrapJumpboxVM bool = true
 @description('The path for Jumpbox VM bootstrap PowerShell script file (expecting "bootstrap.ps1" file)')
-param BootstrapPath string = 'https://raw.githubusercontent.com/shaunjacob/AVSLevelUpFY23/master/LevelUp/LZwtihAVS/Bicep/Bootstrap.ps1?token=GHSAT0AAAAAABX4Q2N5W2XWEMMCVPUIN3O6Y27IEMQ'
+param BootstrapPath string = 'https://raw.githubusercontent.com/shaunjacob/AVSLevelUpFY23/master/LevelUp/LZwtihAVS/Bicep/Bootstrap.ps1'
 @description('The command to trigger running the bootstrap script. If was not provided, then the expected script file name must be "bootstrap.ps1")')
 param BootstrapCommand string = 'powershell.exe -ExecutionPolicy Unrestricted -File bootstrap.ps1'
 @description('The subnet CIDR used for the Bastion Subnet. Must be a /26 or greater within the VNetAddressSpace')
+
+//Spoke
+param DeploySpoke bool = false
+
+
 
 //Variables
 var deploymentPrefix = 'AVS-${uniqueString(deployment().name, Location)}'
@@ -126,7 +131,7 @@ module AzureFirewall 'Modules/AzureFirewall.bicep' = {
   }
 }
 
-module TestVM 'Modules/TestVM.bicep' = {
+module TestVM 'Modules/TestVM.bicep' = if (DeploySpoke) {
   name: '${deploymentPrefix}-SpokeTestVM'
   params: {
     Prefix: Prefix
@@ -138,15 +143,15 @@ module TestVM 'Modules/TestVM.bicep' = {
   }
 }
 
-module VNetPeering 'Modules/VNetPeering.bicep' = {
+module VNetPeering 'Modules/VNetPeering.bicep' = if (DeploySpoke) {
   name: '${deploymentPrefix}-VNetPeering'
   params: {
     Location: Location
     HubNetworkResourceGroupName: AzureNetworking.outputs.HubNetworkResourceGroup
     HubVNetAddressSpaceid: AzureNetworking.outputs.HubVNetResourceId
-    SpokeNetworkResourceGroupName : TestVM.outputs.SpokeNetworkResourceGroup
-    SpokeVNetAddressSpaceid : TestVM.outputs.SpokeVNetResourceId
+    SpokeNetworkResourceGroupName : DeploySpoke ? TestVM.outputs.SpokeNetworkResourceGroup : ''
+    SpokeVNetAddressSpaceid : DeploySpoke ? TestVM.outputs.SpokeVNetResourceId : ''
     HubVnetName : AzureNetworking.outputs.HubVNetName
-    SpokeVNetName : TestVM.outputs.SpokeVNetName
+    SpokeVNetName : DeploySpoke ? TestVM.outputs.SpokeVNetName : ''
   }
 }

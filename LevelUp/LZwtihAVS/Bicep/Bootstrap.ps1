@@ -13,6 +13,7 @@ function Install-Applications {
     choco install vscode -y
     choco install azure-cli -y
     choco install terraform -y
+    choco install git -y
 
     #Optional
     #choco install microsoftazurestorageexplorer -y
