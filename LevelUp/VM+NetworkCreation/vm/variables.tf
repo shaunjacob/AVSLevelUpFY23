@@ -1,4 +1,3 @@
-# VM Variables
 variable "vsphere_datacenter" {
   type = string
 }
@@ -15,6 +14,7 @@ variable "vsphere_password" {
 
 variable "vm-name" {
   type = string
+  default = "levelup-vm"
 }
 
 variable "datastore" {
@@ -29,7 +29,6 @@ variable "cluster" {
 
 variable "host" {
   type = string  
-  default = "testvm"
 }
 variable "network" {
   type = string  
