@@ -1,61 +1,51 @@
 # Network configuration
-nsx_ip       = "https://10.15.0.2/"
+nsx_ip       = "10.15.0.3"
 nsx_username = "cloudadmin"
 nsx_password = "d$14cV15xF*p"
-nsx_tag      = "Test"
+nsx_tag      = "LevelUp-NOV22"
 dhcp_profile = {
-    # DHCP Server IP
-    server_address = "192.168.0.1/30"
-    # Lease
-    lease_time     = 86400
-    # DNS Server nsx_ip
-    dns_servers    = ["8.8.8.8"]
-    display_name = "test"
-    description = "test"
+  description      = "DHCP Profile"
+  display_name     = "LUP-NOV22-DHCP"
+  server_addresses = "192.168.0.2/27"
 }
 overlay_tz = {
-    # Overlay TZ Name
-    display_name = # <"TNTXX-OVERLAY-TZ">
+  display_name = "TNT91-OVERLAY-TZ"
 }
 t0_gateway = {
-    # T0 GW name
-    display_name = "TNT91-T0"
+  display_name = "TNT91-T0"
 }
 t1_gateway = {
-    # T1 GW name
-    display_name = "TNT91-T1"
+  description      = "T1 Gateway"
+  display_name     = "LUP-NOV22-T1GW"
+  server_addresses = "192.168.0.2/27"
 }
 edge_cluster = {
-    # Edge Cluster
-    display_name = "TNT91-CLSTR"
+  display_name = "TNT91-CLSTR"
 }
 lup_oct22_segment = {
-  description  = # <Segment desc>
-  display_name = # <Seg Name>
+  description  = "LUP NOV22 Segment"
+  display_name = "LUP-NOV22-SEG"
   subnet = {
-    # CIDR for your segment
-    cidr                = "192.168.11.1/24"
-    # DHCP IP Range for VMs
-    dhcp_ranges         = ["192.168.11.4-192.168.11.20"]
-    # DHCP Details
-    dhcp_v4_config      = {
-      server_address = "192.168.0.1/30"
+    cidr        = "192.168.1.1/24"
+    dhcp_ranges = ["192.168.1.4-192.168.1.20"]
+    dhcp_v4_config = {
+      server_address = "192.168.0.2/27"
       lease_time     = 86400
-      dns_servers    = ["8.8.8.8"]
+      dns_servers    = ["10.179.0.192"]
     }
   }
   tag = {
-    scope = # <Scope >
-    tag   = # <tag>
+    scope = "LevelUp"
+    tag   = "NOV22"
   }
 }
 
 # VM configuration
-vsphere_datacenter = "LEVELUP-LAB15-SDDC"
-vsphere_server     = "https://10.15.0.2/"
+vsphere_datacenter = "SDDC-Datacenter"
+vsphere_server     = "10.15.0.2"
 vsphere_user       = "cloudadmin@vsphere.local"
 vsphere_password   = "7j#57K)rQah8"
 vm-name            = "levelup-vm"
-datastore          = "vSANDatastore"
-host               = # <ESXi Host Name>
-network            = "lup_oct22_segment"
+datastore          = "vsanDatastore"
+host               = "esx18-r16.p01.canadacentral.avs.azure.com"
+network            = "LUP-NOV22-SEG"
