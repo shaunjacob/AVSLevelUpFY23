@@ -12,7 +12,7 @@ resource PrivateCloud 'Microsoft.AVS/privateClouds@2021-12-01' = {
   location: Location
   properties: {
     networkBlock: NetworkBlock
-    internet: 'Enabled'
+    internet: 'Disabled'
     managementCluster: {
       clusterSize: ManagementClusterSize
     }
