@@ -14,7 +14,7 @@ az group delete --name "LEVELUP-LAB3-SpokeNetwork" --no-wait --yes
 #az group delete --name "LEVELUP-LAB3-PrivateCloud" --no-wait --yes
 
 #Group4
-az group delete --name "LEVELUP-LAB4-HubNetwork" --no-wait --yes
+az group delete --name "LEVELUP-LAB4A-HubNetwork" --no-wait --yes
 az group delete --name "LEVELUP-LAB4-SpokeNetwork" --no-wait --yes
 #az group delete --name "LEVELUP-LAB4-PrivateCloud" --no-wait --yes
 

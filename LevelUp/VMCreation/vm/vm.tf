@@ -35,7 +35,7 @@ resource "vsphere_virtual_machine" "testvm01" {
       disk_provisioning         = data.vsphere_ovf_vm_template.photon_ovf.disk_provisioning
       ovf_network_map           = data.vsphere_ovf_vm_template.photon_ovf.ovf_network_map
       ip_protocol               = "IPV4"
-      ip_allocation_policy      = "STATIC_MANUAL"
+      ip_allocation_policy      = "DHCP"
   }
 
   lifecycle {
