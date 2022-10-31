@@ -6,7 +6,7 @@
             "value": "LEVELUP-LAB17"
         },
         "PrivateCloudAddressSpace": {
-            "value": "10.10.0.0/22"
+            "value": "10.17.0.0/22"
         },
         "PrivateCloudSKU": {
             "value": "AV36"

@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "Prefix": {
-            "value": "LEVELUP-LAB10"
+            "value": "LEVELUP-LAB16"
         },
         "PrivateCloudAddressSpace": {
             "value": "10.16.0.0/22"
