@@ -72,6 +72,24 @@ resource firewall 'Microsoft.Network/azureFirewalls@2022-01-01' = {
                 '53'
               ]
             }
+            {
+              name: 'ICMP'
+              protocols: [
+                'Any'
+              ]
+              sourceAddresses: [
+                '*'
+              ]
+              destinationAddresses: [
+                '*'
+              ]
+              sourceIpGroups: []
+              destinationIpGroups: []
+              destinationFqdns: []
+              destinationPorts: [
+                '*'
+              ]
+            }
           ]
         }
       }
@@ -81,23 +99,23 @@ resource firewall 'Microsoft.Network/azureFirewalls@2022-01-01' = {
   }
 }
 
-resource AZFWRouteTable 'Microsoft.Network/routeTables@2022-05-01' = {
-  name: 'ToAZFW-RouteTable'
-  location: Location
-  properties: {
-    disableBgpRoutePropagation: true
-    routes: [
-      {
-        name: 'ToAZFW'
-        properties: {
-          addressPrefix: '0.0.0.0/0'
-          nextHopIpAddress: firewall.properties.ipConfigurations[0].properties.privateIPAddress
-          nextHopType: 'VirtualAppliance'
-        }
-      }
-    ]
-  }
-}
+// resource AZFWRouteTable 'Microsoft.Network/routeTables@2022-05-01' = {
+//   name: 'ToAZFW-RouteTable'
+//   location: Location
+//   properties: {
+//     disableBgpRoutePropagation: true
+//     routes: [
+//       {
+//         name: 'ToAZFW'
+//         properties: {
+//           addressPrefix: '0.0.0.0/0'
+//           nextHopIpAddress: firewall.properties.ipConfigurations[0].properties.privateIPAddress
+//           nextHopType: 'VirtualAppliance'
+//         }
+//       }
+//     ]
+//   }
+// }
 
 resource ToInternetRouteTable 'Microsoft.Network/routeTables@2022-05-01' = {
   name: 'ToInternet-RouteTable'

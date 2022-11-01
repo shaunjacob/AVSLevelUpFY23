@@ -8,7 +8,6 @@ param vmSize string = 'Standard_B2s'
 
 var Name = '${Prefix}-nva'
 var Hostname = 'nva'
-var publicIPAddressName = '${Prefix}-nva-pip'
 var networkSecurityGroupName = '${Prefix}-nva-nsg'
 var osDiskType = 'Standard_LRS'
 
@@ -25,9 +24,6 @@ resource nic 'Microsoft.Network/networkInterfaces@2021-05-01' = {
             id: NVASubnetid
           }
           privateIPAllocationMethod: 'Dynamic'
-          publicIPAddress: {
-            id: publicIP.id
-          }
         }
       }
     ]
@@ -59,19 +55,6 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2021-05-01' = {
   }
 }
 
-
-resource publicIP 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
-  name: publicIPAddressName
-  location: Location
-  sku: {
-    name: 'Basic'
-  }
-  properties: {
-    publicIPAllocationMethod: 'Dynamic'
-    publicIPAddressVersion: 'IPv4'
-    idleTimeoutInMinutes: 4
-  }
-}
 
 resource frrvm 'Microsoft.Compute/virtualMachines@2021-11-01' = {
   name: Name

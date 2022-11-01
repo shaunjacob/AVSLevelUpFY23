@@ -40,3 +40,8 @@ Disable-IEESC
 Install-Applications
 
 #======================================
+
+Start-Sleep 20
+
+mkdir c:\Github
+git clone https://github.com/shaunjacob/AVSLevelUpFY23.git c:\Github\AVSLevelUp
