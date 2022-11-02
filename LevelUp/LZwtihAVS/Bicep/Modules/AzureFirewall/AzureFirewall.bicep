@@ -72,24 +72,6 @@ resource firewall 'Microsoft.Network/azureFirewalls@2022-01-01' = {
                 '53'
               ]
             }
-            {
-              name: 'ICMP'
-              protocols: [
-                'Any'
-              ]
-              sourceAddresses: [
-                '*'
-              ]
-              destinationAddresses: [
-                '*'
-              ]
-              sourceIpGroups: []
-              destinationIpGroups: []
-              destinationFqdns: []
-              destinationPorts: [
-                '*'
-              ]
-            }
           ]
         }
       }
@@ -121,7 +103,7 @@ resource ToInternetRouteTable 'Microsoft.Network/routeTables@2022-05-01' = {
   name: 'ToInternet-RouteTable'
   location: Location
   properties: {
-    disableBgpRoutePropagation: true
+    disableBgpRoutePropagation: false
     routes: [
       {
         name: 'ToInternet'

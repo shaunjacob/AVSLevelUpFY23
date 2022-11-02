@@ -1,11 +1,11 @@
-// @description('The location the new virtual network & gateway should reside in')
-// param Location string = resourceGroup().location
+@description('The location the new virtual network & gateway should reside in')
+param Location string = resourceGroup().location
+
+param Prefix string
 
 // @description('Name of the virtual network to be created')
 // param ANFSubnetPrefixid string
 
-// @description('Name of the NetApp Account to be created for the Azure NetApp Files datastore')
-// param netappAccountName string
 
 // @description('Service level of the Azure NetApp Files capacity pool and volume to be created')
 // @allowed([
@@ -27,11 +27,14 @@
 // @description('Name of the capacity pool to be created for the Azure NetApp Files datastore')
 // param netappCapacityPoolName string
 
-// @description('create Azure NetApp Files account')
-// resource netappAccount 'Microsoft.NetApp/netAppAccounts@2022-01-01' = { 
-//     name: netappAccountName
-//     location: Location 
-// }
+
+var netappAccountName = '${Prefix}-ANF'
+
+@description('create Azure NetApp Files account')
+resource netappAccount 'Microsoft.NetApp/netAppAccounts@2022-01-01' = { 
+    name: netappAccountName
+    location: Location 
+}
 
 // @description('create Azure NetApp Files capacity pool')
 // resource netappCapacityPool 'Microsoft.NetApp/netAppAccounts/capacityPools@2022-01-01' = {
@@ -75,3 +78,6 @@
 //     usageThreshold: netappVolumeSize
 //   }
 // }
+
+output ANFAccountName string = netappAccount.name
+output ANFAccountid string = netappAccount.id

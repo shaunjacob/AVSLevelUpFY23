@@ -39,7 +39,7 @@ param Username string = 'avsjump'
 param Password string = ''
 param JumpboxSku string = 'Standard_B2s'
 @description('Should run a bootstrap PowerShell script on the Jumpbox VM or not')
-param BootstrapJumpboxVM bool = true
+param BootstrapJumpboxVM bool = false
 @description('The path for Jumpbox VM bootstrap PowerShell script file (expecting "bootstrap.ps1" file)')
 param BootstrapPath string = 'https://raw.githubusercontent.com/shaunjacob/AVSLevelUpFY23/master/LevelUp/LZwtihAVS/Bicep/Bootstrap.ps1'
 @description('The command to trigger running the bootstrap script. If was not provided, then the expected script file name must be "bootstrap.ps1")')
@@ -48,6 +48,9 @@ param BootstrapCommand string = 'powershell.exe -ExecutionPolicy Unrestricted -F
 
 //Spoke
 param DeploySpoke bool = false
+
+//ANF
+param DeployANF bool = true
 
 
 
@@ -153,5 +156,13 @@ module VNetPeering 'Modules/VNetPeering.bicep' = if (DeploySpoke) {
     SpokeVNetAddressSpaceid : DeploySpoke ? TestVM.outputs.SpokeVNetResourceId : ''
     HubVnetName : AzureNetworking.outputs.HubVNetName
     SpokeVNetName : DeploySpoke ? TestVM.outputs.SpokeVNetName : ''
+  }
+}
+
+module ANF 'Modules/ANF.bicep' = if (DeployANF) {
+  name: '${deploymentPrefix}-ANF'
+  params: {
+    Prefix: Prefix
+    Location: Location
   }
 }
