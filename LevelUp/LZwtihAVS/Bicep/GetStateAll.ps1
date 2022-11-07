@@ -21,12 +21,15 @@ $Resources = import-csv $path
 
 $Resources | ForEach-Object { 
 
-        Get-AzVMwarePrivateCloud -ResourceGroupName $_.PrivateCloudResourceGroup -name $_.PrivateCloudName | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
-        Get-AzVM -ResourceGroupName $_.HubResourceGroup -Name $_.JumpboxVM | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
-        Get-AzVM -ResourceGroupName $_.HubResourceGroup -Name $_.NVAVM | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
-        Get-AzFirewall -ResourceGroupName $_.HubResourceGroup -Name $_.AzureFirewall | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
-        Get-AzBastion -ResourceGroupName $_.HubResourceGroup -Name $_.Bastion | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
-        Get-AzRouteServer -ResourceGroupName $_.HubResourceGroup -RouteServerName $_.RouteServer | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
-        Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $_.HubResourceGroup -Name $_.AVSConnection | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
-        Get-AzRouteTable -ResourceGroupName $_.HubResourceGroup -Name "ToInternet-RouteTable" | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagations
+        #Get-AzVMwarePrivateCloud -ResourceGroupName $_.PrivateCloudResourceGroup -name $_.PrivateCloudName | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
+        #Get-AzVM -ResourceGroupName $_.HubResourceGroup -Name $_.JumpboxVM | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
+        #Get-AzVM -ResourceGroupName $_.HubResourceGroup -Name $_.NVAVM | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
+        #Get-AzFirewall -ResourceGroupName $_.HubResourceGroup -Name $_.AzureFirewall | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
+        #Get-AzBastion -ResourceGroupName $_.HubResourceGroup -Name $_.Bastion | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
+        Get-AzRouteServer -ResourceGroupName $_.HubResourceGroup -RouteServerName $_.RouteServer | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText
+        #Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $_.HubResourceGroup -Name $_.AVSConnection | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagation
+        #Get-AzRouteTable -ResourceGroupName $_.HubResourceGroup -Name "ToInternet-RouteTable" | select-object name, ProvisioningState, AllowBranchToBranchTraffic, PeeringsText, DisableBgpRoutePropagations
         }
+
+
+        Get-AzRouteServer -ResourceGroupName "LEVELUP-LAB3-HubNetwork" -RouteServerName "LEVELUP-LAB3-RS" | fl *

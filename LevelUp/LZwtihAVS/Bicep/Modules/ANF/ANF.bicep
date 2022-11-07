@@ -1,22 +1,15 @@
 @description('The location the new virtual network & gateway should reside in')
 param Location string = resourceGroup().location
-
 param Prefix string
+param DeployCapacityPool bool
 
-// @description('Name of the virtual network to be created')
+param netappCapacityPoolServiceLevel string = 'Standard'
+
+@description('Size of the Azure NetApp Files datastore to be created')
+param netappCapacityPoolSize int = 4398046511104
+
+
 // param ANFSubnetPrefixid string
-
-
-// @description('Service level of the Azure NetApp Files capacity pool and volume to be created')
-// @allowed([
-//   'Standard'
-//   'Premium'
-//   'Ultra'
-// ])
-// param netappCapacityPoolServiceLevel string = 'Standard'
-
-// @description('Size of the Azure NetApp Files datastore to be created')
-// param netappCapacityPoolSize int
 
 // @description('Name of the volume to be created for the Azure NetApp Files datastore')
 // param netappVolumeName string
@@ -24,11 +17,8 @@ param Prefix string
 // @description('Size of the volume to be created for the Azure NetApp Files datastore')
 // param netappVolumeSize int
 
-// @description('Name of the capacity pool to be created for the Azure NetApp Files datastore')
-// param netappCapacityPoolName string
-
-
 var netappAccountName = '${Prefix}-ANF'
+var netappCapacityPoolName = '${Prefix}-ANF-CP'
 
 @description('create Azure NetApp Files account')
 resource netappAccount 'Microsoft.NetApp/netAppAccounts@2022-01-01' = { 
@@ -36,18 +26,18 @@ resource netappAccount 'Microsoft.NetApp/netAppAccounts@2022-01-01' = {
     location: Location 
 }
 
-// @description('create Azure NetApp Files capacity pool')
-// resource netappCapacityPool 'Microsoft.NetApp/netAppAccounts/capacityPools@2022-01-01' = {
-//   name: netappCapacityPoolName
-//   location: Location
-//   parent: netappAccount
-//   properties: {
-//     coolAccess: false
-//     qosType: 'Auto'
-//     serviceLevel: netappCapacityPoolServiceLevel
-//     size: netappCapacityPoolSize
-//   }
-// }
+@description('create Azure NetApp Files capacity pool')
+resource netappCapacityPool 'Microsoft.NetApp/netAppAccounts/capacityPools@2022-01-01' = if (DeployCapacityPool) {
+    name: netappCapacityPoolName
+    location: Location
+    parent: netappAccount
+    properties: {
+        coolAccess: false
+        qosType: 'Auto'
+        serviceLevel: netappCapacityPoolServiceLevel
+        size: netappCapacityPoolSize
+    }
+}
 
 // @description('create Azure NetApp Files volume')
 // resource netappVolume 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes@2022-01-01' = {

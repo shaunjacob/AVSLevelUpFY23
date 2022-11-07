@@ -8,7 +8,7 @@ param Prefix string = 'SJLUPTEST1'
 param Location string = deployment().location
 
 //Private Cloud
-param DeployPrivateCloud bool = true
+param DeployPrivateCloud bool = false
 @description('The address space used for the AVS Private Cloud management networks. Must be a non-overlapping /22')
 param PrivateCloudAddressSpace string
 @description('The SKU that should be used for the first cluster, ensure you have quota for the given SKU before deploying')
@@ -48,10 +48,15 @@ param BootstrapCommand string = 'powershell.exe -ExecutionPolicy Unrestricted -F
 
 //Spoke
 param DeploySpoke bool = false
+param DeployAzureNetworking bool = false
+param DeployVnetConnection bool = false
+param DeployRouteServer bool = false
+param DeployJumpbox bool = false
+param DeployAzureFirewall bool = false
 
 //ANF
 param DeployANF bool = true
-
+param DeployCapacityPool bool = true
 
 
 //Variables
@@ -68,7 +73,7 @@ module AVSCore 'Modules/AVSCore.bicep' = if (DeployPrivateCloud) {
   }
 }
 
-module VNetConnection 'Modules/VNetConnection.bicep' = {
+module VNetConnection 'Modules/VNetConnection.bicep' = if (DeployVnetConnection) {
   name: '${deploymentPrefix}-VNet'
   params: {
     GatewayName: AzureNetworking.outputs.GatewayName
@@ -80,7 +85,7 @@ module VNetConnection 'Modules/VNetConnection.bicep' = {
   }
 }
 
-module AzureNetworking 'Modules/AzureNetworking.bicep' = {
+module AzureNetworking 'Modules/AzureNetworking.bicep' = if (DeployAzureNetworking) {
   name: '${deploymentPrefix}-AzureNetworking'
   params: {
     Prefix: Prefix
@@ -96,7 +101,7 @@ module AzureNetworking 'Modules/AzureNetworking.bicep' = {
   }
 }
 
-module RouteServer 'Modules/RouteServer.bicep' = {
+module RouteServer 'Modules/RouteServer.bicep' = if (DeployRouteServer) {
   name: '${deploymentPrefix}-RouteServer'
   params: {
     Prefix: Prefix
@@ -105,7 +110,7 @@ module RouteServer 'Modules/RouteServer.bicep' = {
   }
 }
 
-module Jumpbox 'Modules/JumpBox.bicep' = {
+module Jumpbox 'Modules/JumpBox.bicep' = if (DeployJumpbox) {
   name: '${deploymentPrefix}-Jumpbox'
   params: {
     Prefix: Prefix
@@ -122,7 +127,7 @@ module Jumpbox 'Modules/JumpBox.bicep' = {
   }
 }
 
-module AzureFirewall 'Modules/AzureFirewall.bicep' = {
+module AzureFirewall 'Modules/AzureFirewall.bicep' = if (DeployAzureFirewall) {
   name: '${deploymentPrefix}-AzureFirewall'
   params: {
     Prefix: Prefix
@@ -164,5 +169,6 @@ module ANF 'Modules/ANF.bicep' = if (DeployANF) {
   params: {
     Prefix: Prefix
     Location: Location
+    DeployCapacityPool: DeployCapacityPool
   }
 }

@@ -51,4 +51,4 @@ $Resources | ForEach-Object {
             RouteTableState = $h.ProvisioningState
             RouteTableBGP = $h.DisableBgpRoutePropagation
         } 
-        } | Format-Table 'PrivateCloud', 'PCState', 'Jumpbox', 'JumpboxState', 'NVA', 'NVAState','Firewall', 'FWState','RouteServer', 'RSState', 'RSBranchtoBranch', 'Peerings', 'GWConnection', 'GWConnectionState', 'RouteTable', 'RouteTableState', 'RouteTableBGP'
+        } | Format-Table 'PrivateCloud', 'PCState', 'Jumpbox', 'JumpboxState', 'NVA', 'NVAState','Firewall', 'FWState','RouteServer', 'RSState', 'RSBranchtoBranch', 'Peerings', 'GWConnection', 'GWConnectionState', 'RouteTable', 'RouteTableState', 'RouteTableBGP' -AutoSize

@@ -2,6 +2,7 @@ targetScope = 'subscription'
 
 param Location string
 param Prefix string
+param DeployCapacityPool bool
 
 resource NetworkResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: '${Prefix}-HubNetwork'
@@ -14,6 +15,7 @@ module ANF 'ANF/ANF.bicep' = {
   params: {
     Location: Location
     Prefix : Prefix
+    DeployCapacityPool: DeployCapacityPool
   }
 }
 
