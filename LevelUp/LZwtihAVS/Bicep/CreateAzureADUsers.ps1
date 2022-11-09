@@ -1,4 +1,4 @@
-Connect-AzureAD -TenantId 8cb3390f-7308-4b0a-a113-432138b927aa
+Connect-AzureAD -TenantId 'tenantid'
 
 $PasswordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
 $PasswordProfile.Password = "ChangeM3!"

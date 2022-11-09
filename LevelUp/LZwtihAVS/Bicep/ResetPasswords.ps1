@@ -1,4 +1,4 @@
-$password = ConvertTo-SecureString ChangeM3! -AsPlainText -Force
+$password = ConvertTo-SecureString 'xxx' -AsPlainText -Force
 
 #Group1
 
